@@ -1,0 +1,126 @@
+Ahh 👍 got it! You’ve already applied for this job, now you want to prepare SQL Server from scratch so you’ll be confident in interviews/tests. 🚀
+
+Let’s build you a step-by-step SQL Server preparation roadmap with queries.
+
+✅ SQL Server Preparation Plan (From Zero to Confident)
+Step 1: Basics of SQL
+
+👉 Learn these first commands:
+
+-- Create Database
+CREATE DATABASE CompanyDB;
+
+-- Use Database
+USE CompanyDB;
+
+-- Create Table
+CREATE TABLE Employees (
+    EmpID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Department VARCHAR(50),
+    Salary DECIMAL(10,2)
+);
+
+-- Insert Data
+INSERT INTO Employees VALUES (1, 'Ali', 25, 'IT', 55000);
+INSERT INTO Employees VALUES (2, 'Sara', 28, 'HR', 45000);
+INSERT INTO Employees VALUES (3, 'Ahmed', 30, 'Finance', 60000);
+
+-- View Data
+SELECT * FROM Employees;
+
+Step 2: Filtering & Sorting
+-- WHERE clause
+SELECT * FROM Employees WHERE Department = 'IT';
+
+-- ORDER BY
+SELECT * FROM Employees ORDER BY Salary DESC;
+
+-- TOP N
+SELECT TOP 2 * FROM Employees;
+
+Step 3: Functions & Operators
+-- COUNT, AVG, SUM
+SELECT COUNT(*) AS TotalEmployees FROM Employees;
+SELECT AVG(Salary) AS AvgSalary FROM Employees;
+SELECT SUM(Salary) AS TotalSalaries FROM Employees;
+
+-- LIKE
+SELECT * FROM Employees WHERE Name LIKE 'A%';
+
+Step 4: Joins
+
+👉 Create another table:
+
+CREATE TABLE Departments (
+    DeptID INT PRIMARY KEY,
+    DeptName VARCHAR(50)
+);
+
+INSERT INTO Departments VALUES (1, 'IT'), (2, 'HR'), (3, 'Finance');
+
+
+Now practice:
+
+-- INNER JOIN
+SELECT E.Name, D.DeptName
+FROM Employees E
+INNER JOIN Departments D ON E.Department = D.DeptName;
+
+-- LEFT JOIN
+SELECT E.Name, D.DeptName
+FROM Employees E
+LEFT JOIN Departments D ON E.Department = D.DeptName;
+
+Step 5: Subqueries & Grouping
+-- GROUP BY
+SELECT Department, COUNT(*) AS TotalEmployees
+FROM Employees
+GROUP BY Department;
+
+-- HAVING
+SELECT Department, AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY Department
+HAVING AVG(Salary) > 50000;
+
+-- Subquery
+SELECT Name, Salary
+FROM Employees
+WHERE Salary > (SELECT AVG(Salary) FROM Employees);
+
+Step 6: Advanced Topics
+
+Stored Procedures
+
+CREATE PROCEDURE GetHighSalaryEmployees
+AS
+BEGIN
+    SELECT * FROM Employees WHERE Salary > 50000;
+END;
+
+EXEC GetHighSalaryEmployees;
+
+
+Views
+
+CREATE VIEW IT_Employees AS
+SELECT * FROM Employees WHERE Department = 'IT';
+
+SELECT * FROM IT_Employees;
+
+
+Indexes
+
+CREATE INDEX idx_department ON Employees(Department);
+
+🎯 Preparation Flow for You
+
+Practice Step 1–3 in first 3–4 days.
+
+Do Joins & Subqueries in next 3–4 days.
+
+Move to Procedures, Views, Indexes after 1 week.
+
+Revise with LeetCode SQL problems (they are interview-style).

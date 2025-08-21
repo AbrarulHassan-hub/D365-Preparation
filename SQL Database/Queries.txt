@@ -1,0 +1,173 @@
+create database EdenRobeDB
+USE EdenRobeDB
+CREATE TABLE EmployeeTb
+(
+EmpId int primary key,
+Name varchar(255),
+Department varchar(255),
+Salary int,
+HireData Varchar(255)
+)
+insert into EmployeeTb values(1,'Ali','IT',60000,'2022-05-10')
+insert into EmployeeTb values(2,'Ahmed','HR',45000,'2023-01-15')
+insert into EmployeeTb values(3,'Sana','IT',75000, '2021-07-20')
+INSERT INTO EmployeeTb VALUES(4,'Ayesha', 'Finance', 500000,'2022-09-01')
+insert into EmployeeTb values(5,'Bilal', 'HR', 40000, '2023-04-05')
+INSERT into EmployeeTb values(6,'Zain', 'IT', 80000, '2020-11-11')
+
+--Practice Questions (WHERE Clause)
+
+SELECT * FROM EmployeeTb
+
+--Select all employees from IT department.
+SELECT * FROM EmployeeTb WHERE Department = 'IT'
+
+--Get all employees with salary greater than 50,000.
+SELECT * FROM EmployeeTb WHERE Salary > 50000
+
+--Find employees whose salary is less than 45,000.
+SELECT * FROM EmployeeTb WHERE Salary < 45000
+
+--Select employees who work in IT department AND salary > 70,000.
+SELECT * FROM EmployeeTb WHERE Department = 'IT' AND Salary > 70000
+
+--Get employees who are either in HR department OR earn more than 70,000.
+SELECT * FROM EmployeeTb WHERE Department = 'HR' OR Salary > 70000
+
+--Find employees with salary between 45,000 and 70,000.
+SELECT * FROM EmployeeTb WHERE Salary BETWEEN 45000 AND 70000 
+
+--Get employees whose name starts with 'A'.
+SELECT * FROM EmployeeTb WHERE Name LIKE 'a%'
+
+--Find employees who were hired after 2022-01-01.
+SELECT * FROM EmployeeTb WHERE CAST(HireData as date) > '2022-01-01'
+
+--Select all employees NOT in HR department.
+SELECT * FROM EmployeeTb WHERE Department != 'HR'
+
+--Find employees in IT department with salary > 60,000 and hired before 2022-01-01.
+SELECT * FROM EmployeeTb WHERE Department = 'IT' AND Salary > 60000 AND CAST(HireData AS Date) < '2022-01-01'
+
+
+
+--------ORDER BY Practice Questions--------
+
+--List all employees ordered by Salary (lowest to highest).
+select * from EmployeeTb order by Salary asc
+
+--Show employees ordered by Name (alphabetical order A–Z).
+select * from EmployeeTb order by Name ASC
+
+--Show employees ordered by HireDate (newest employee first).
+select * from EmployeeTb order by HireData asc
+
+--Show employees from IT department only, ordered by salary (highest first).
+select * from EmployeeTb where Department = 'IT' ORDER BY Salary desc
+
+--Show employees from HR department only, ordered by HireDate (oldest first).
+select * from EmployeeTb where Department = 'HR' ORDER BY HireData ASC
+
+--Show all employees ordered first by Department (A–Z) and then by Salary (highest first within each department).
+select * from EmployeeTb order by Department desc,Salary desc
+
+--Show top 3 employees with the highest salary. (-- TOP N)
+select TOP 3* from EmployeeTb ORDER BY Salary DESC 
+
+--Show top 3 employees with the earliest joining date. (-- TOP N)
+SELECT TOP 3* FROM EmployeeTb order by HireData asc
+
+--Show employees whose name starts with “A” ordered by salary descending
+select * from EmployeeTb where Name like 'a%' order by Salary desc
+
+--Show employees ordered by length of their Name (shortest name first).
+select * from EmployeeTb order by len(Name) asc
+
+
+
+-----Practice Questions (COUNT, AVG, SUM)-------
+----Practice Before Solve MOre Question
+select count(*) as TotalEmployee From EmployeeTb
+
+select avg(Salary) as AvgSalary from EmployeeTb
+
+select sum(Salary) as TotalSalary from EmployeeTb 
+
+----Start Practice----
+--Find the total number of employees in the company.
+select count(*) TotalEmployee from EmployeeTb
+--Count how many employees work in the IT department.
+select count(*) EmployeeInITDepart from EmployeeTb where Department = 'IT'
+--Count how many employees were hired after 2022-01-01.
+Select count(*) HireAfterDate from EmployeeTb WHERE CAST(HireData as date) > '2022-01-01'
+--Count how many employees have salary greater than 50,000.
+select count(*) employees from EmployeeTb where Salary > 50000
+--Count employees whose names start with "A".
+select count(*) Employees from EmployeeTb where Name like 'a%'
+--Find the average salary of all employees.
+select avg(Salary) AvgSalary from EmployeeTb 
+--Find the average salary of employees in the HR department.
+select avg(Salary) AvgSalaryHR from EmployeeTb where Department = 'HR'
+--Find the average salary of employees hired in 2023.
+select avg(Salary) AvgSalaryDate from EmployeeTb where YEAR(HireData)  = '2023'
+--Find the average salary of employees whose name length > 4.
+select avg(Salary) AvgSalary from EmployeeTb where len(Name) > 4
+--Find the average salary of employees who are NOT in IT department.
+select avg(Salary) AvgSalary from EmployeeTb where Department != 'IT'
+--Find the total salary the company is paying to all employees.
+SELECT sum(Salary) TotalSalary from EmployeeTb
+--Find the total salary paid to employees in the Finance department.
+select sum(salary) PaidSalarytoFinance from EmployeeTb where Department = 'Finance'
+--Find the total salary paid to employees hired after 2022-01-01
+select sum(Salary) PaidSalaryDate from EmployeeTb where CAST(HireData AS date) > '2022-01-01'
+--Find the total salary of employees whose name starts with “S”.
+select sum(Salary) PiadSalaryWithName from EmployeeTb where NAME LIKE 's%'
+--Find the total salary of top 3 highest-paid employees. (Hint: Use subquery with TOP 3)
+select SUM(Salary) Top3HighestPaidSalart from (select TOP 3* FROM EmployeeTb) AS T
+
+-----Practice Questions (COUNT, AVG, SUM) END-------
+
+
+-------INNER JOINS-----
+create Table Departments
+(
+DepId int PRIMARY KEY,
+DeptName Varchar(50)
+)
+insert into Departments values (1,'IT'), (2,'HR'), (3,'Finance'),(4,'Computer Sceince')
+
+select * from Departments
+
+select E.Name , D.DeptName from EmployeeTb E INNER JOIN Departments D on E.Department = D.DeptName
+
+CREATE TABLE Employees (
+    EmpID INT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Age INT,
+    Salary DECIMAL(10,2),
+    DepId INT,  -- Foreign Key
+    FOREIGN KEY (DepId) REFERENCES Departments(DepId)
+);
+
+INSERT INTO Employees VALUES (1, 'Ali', 25, 55000, 1);
+INSERT INTO Employees VALUES (2, 'Sara', 28, 45000, 2);
+INSERT INTO Employees VALUES (3, 'Ahmed', 30, 60000, 3);
+INSERT INTO Employees VALUES (4, 'Zara', 26, 48000, 1);
+INSERT INTO Employees VALUES (5, 'Ali', 26, 48000, 3);
+
+select * from Employees
+select * from Departments
+
+SELECT * FROM Employees inner JOIN Departments ON Employees.DepId = Departments.DepId
+
+--LEFT JOIN
+--The LEFT JOIN keyword returns all records from the left table (table1), 
+--and the matching records from the right table (table2).
+--The result is 0 records from the right side, if there is no match.
+
+SELECT *
+FROM Employees E
+LEFT JOIN Departments D ON E.DepId = D.DepId;
+
+--Solved Left join here-https://www.programiz.com/sql/online-compiler?preset=Customers1,%20Orders1&ref=fb7be24f
+--Same AS LEFT join Right join work same as!
