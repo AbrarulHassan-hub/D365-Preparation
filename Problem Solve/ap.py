@@ -101,3 +101,11 @@ for char in name:
   if char in "AaEeIiOoUu":
     count = count+1;
 print(count)
+
+#Remove Dublicate Character From String
+name  = "Abrar"
+result  = ""
+for char in name:
+  if char not in result:
+    result = result+char
+print(result)
