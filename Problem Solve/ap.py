@@ -199,3 +199,38 @@ for i in matrix:
             minimum = val
 print("Maximum Value: ",maximum)
 print("Minimum Value: ",minimum)
+
+#Search an element in a 2D array
+matrix = [
+    [5, 2, 8],
+    [1, 9, 4]
+]
+findvalue = 10
+found = False
+for i in range(len(matrix)):
+    for value in range(len(matrix[i])):
+        if matrix[i][value] == findvalue:
+            print("Found Element in the array 2D: ",value)
+            found = True
+if not found:
+        print(f"Element {findvalue} not found in the array")
+        
+        
+#Print the row-wise and column-wise sum.
+matrix = [
+    [5, 2, 8],
+    [1, 9, 4]
+]
+sum = 0;
+print("Row Wise Sum the Elements")
+for i in range(len(matrix)):
+    for j in range(len(matrix[i])):
+        sum = sum+matrix[i][j]
+    print(sum)
+print("Col wise Sum the Elements")
+for i in range(len(matrix[0])):
+    sum =0;
+    for j in range(len(matrix)):
+        sum = sum + matrix[j][i]
+    print(sum)
+    
