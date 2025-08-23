@@ -181,4 +181,10 @@ for val in matrix:
     for j in val:
         print(j,end=" ")
     print()
-    
+  
+print("Sum of All Elements")
+sum = 0
+for i in matrix:
+    for val in i:
+        sum = sum+val
+print(sum)
