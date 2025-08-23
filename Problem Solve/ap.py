@@ -188,3 +188,14 @@ for i in matrix:
     for val in i:
         sum = sum+val
 print(sum)
+print("Maximum and Minimum Value find from 2D matrix")
+minimum = matrix[0][0]
+maximum = matrix[0][0]
+for i in matrix:
+    for val in i:
+        if val > maximum:
+            maximum = val
+        if val < minimum:
+            minimum = val
+print("Maximum Value: ",maximum)
+print("Minimum Value: ",minimum)
