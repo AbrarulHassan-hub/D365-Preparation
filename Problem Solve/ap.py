@@ -165,4 +165,20 @@ for i in range(0,n):
     print(end=" ")
   for k in range(0,i+1):
     print("*",end=" ")
-  print();
+  print()
+  
+#2D Array -> Write a program to take input and print a 2D array.
+row = int(input("Please Enter Row: "))
+col = int(input("Please Enter Col: "))
+matrix= []
+for i in range(row):
+    row = []
+    for j in range(col):
+        val = int(input(f"Please Enter at: [{i}] [{j}]"))
+        row.append(val)
+    matrix.append(row)
+for val in matrix:
+    for j in val:
+        print(j,end=" ")
+    print()
+    
