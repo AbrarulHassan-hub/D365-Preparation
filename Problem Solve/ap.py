@@ -109,3 +109,34 @@ for char in name:
   if char not in result:
     result = result+char
 print(result)
+
+
+#Make Pattern #
+# *
+# *1
+# *123
+# *+1A3
+# *12+-Ab
+# *12+A-bcd
+
+nums = "123456789"
+specials = "+-"
+uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+lowers = "abcdefghijklmnopqrstuvwxyz"
+n = 6
+for i in range(n):
+  line = "*"
+  if i == 0:
+    pass
+  elif i == 1:
+    line = line+nums[0]
+  elif i == 2:
+    line = line +nums[0]+ nums[1]+nums[2]
+  elif i == 3:
+    line = line + specials[0]+nums[0]+uppers[0]+nums[2]
+  elif i == 4:
+    line = line + nums[0] + nums[1]+specials[0]+specials[1]+uppers[0]+lowers[1]
+  elif i == 5:
+    line = line + nums[0] + nums[1]+specials[0]+uppers[0]+specials[1]+lowers[1]+lowers[2]+lowers[3]
+  print(line)
+  
