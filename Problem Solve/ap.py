@@ -140,3 +140,29 @@ for i in range(n):
     line = line + nums[0] + nums[1]+specials[0]+uppers[0]+specials[1]+lowers[1]+lowers[2]+lowers[3]
   print(line)
   
+#Pattern Use
+# *
+# * *
+# * * *
+# * * * *
+# * * * * *
+n= 5;
+for i in range(n+1):
+  for j in range(i):
+    print("*",end="")
+  print()
+  
+  #PATTERN USE
+#     * 
+#    * * 
+#   * * * 
+#  * * * * 
+# * * * * * 
+
+n = 5
+for i in range(0,n):
+  for j in range(0,n-i-1):
+    print(end=" ")
+  for k in range(0,i+1):
+    print("*",end=" ")
+  print();
