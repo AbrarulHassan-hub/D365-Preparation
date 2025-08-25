@@ -234,3 +234,18 @@ for i in range(len(matrix[0])):
         sum = sum + matrix[j][i]
     print(sum)
     
+#Matrix Transpose
+matrix  = [
+    [1,2,3],
+    [4,5,6]
+]
+rows = len(matrix)
+cols = len(matrix[0])
+transpose = [[0 for _ in range(rows)] for _ in range(cols)]
+print(transpose)
+for i in range(rows):
+    for j in range(cols):
+        transpose[j][i] = matrix [i][j]
+print("Print Transpose Matrix")
+for i in transpose:
+    print(i)
