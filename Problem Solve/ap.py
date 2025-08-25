@@ -249,3 +249,17 @@ for i in range(rows):
 print("Print Transpose Matrix")
 for i in transpose:
     print(i)
+
+
+#Find Second Largest Number in an Array (without using built-in functions like max, sort)
+arr = [12, 35, 1, 10, 34, 1]
+secondLarges = -999999
+largest = -999999
+for i in range(len(arr)):
+    if arr[i] > largest:
+        secondLarges = largest
+        largest = arr[i]
+    elif arr[i] > secondLarges and arr[i] != largest:
+        secondLarges = arr[i];
+print("Largest Element : ",largest)
+print("Second Largest Element : ",secondLarges)
