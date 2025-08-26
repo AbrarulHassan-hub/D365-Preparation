@@ -1,4 +1,8 @@
-Inheritance Code
+Inheritance 
+Real Life: Har dog ek animal hai. Animal ke features (Eat, Sleep) dog me bhi automatically aa jaate hain. Saath dog ke apne features (Bark) bhi hote hain. Matlab parent ke features child ko mil gaye.
+“Inheritance ka matlab hai ek class dusri class ke features inherit kare. Jese Dog ek Animal hai, to uske paas Eat aur Sleep ke methods automatically aa gaye, aur wo apna Bark ka method bhi add kar sakta hai.”
+
+Code
 
 using System;
 
@@ -34,7 +38,10 @@ public class Dog:Animal
 
 ------------------------------------------------
 Encapsulation
+"Encapsulation ka matlab hai data ko hide karna aur usko sirf defined methods ke zariye access karna. Jese bank account ka balance direct accessible nahi hota, sirf deposit/withdraw ke functions ke through hi hota ha"
+Real Life: Socho ek Bank Account hai. Uska balance tum direct change nahi kar sakte, sirf deposit aur withdraw ke functions ke through hi update hoga. Yehi data ko chhupana aur control dena encapsulation hai.
 
+CODE:
 using System;
 
 public class HelloWorld
@@ -99,6 +106,10 @@ public class BankAccount
 }
 ------------------------------------------------------
 Polymorphism
+Real Life: Agar main bolo ‘Speak’ → Dog bolega ‘Bark’, Cat bolegi ‘Meow’, Cow bolegi ‘Moo’. Matlab method ka naam same hai lekin output object ke hisaab se change ho raha hai. Yehi polymorphism hai.
+Polymorphism ka matlab hai ek hi method alag-alag behavior show kare depending on object. Jese ‘Speak’ function Dog ke liye bark karega aur Cat ke liye meow karega.
+
+CODE: 
 Compile-time Polymorphism (Method Overloading)
 using System;
 
@@ -166,6 +177,8 @@ public class Cat : Animal
 }
 ---------------------------------------------------
 Abstraction
+“Abstraction ka matlab hai ke user ko sirf ‘kya karna hai’ dikhana, lekin ‘kaise ho raha hai’ chhupana. Jese car ka accelerator dabao to gadi chalti hai, andar engine kaise kaam kar raha hai wo hidden hai.”
+Real Life: Tum car ka accelerator dabaate ho, car chalti hai. Tumhe yeh nahi pata engine andar kaise petrol jala ke energy bana raha hai. Tumhe sirf ‘Drive’ ka function dikh raha hai, detail chhup gayi. Ye abstraction hai.
 
 using System;
 
