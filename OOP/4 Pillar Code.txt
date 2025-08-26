@@ -1,0 +1,226 @@
+Inheritance Code
+
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        Dog d = new Dog();
+        d.Eat();
+        d.Sleep();
+        d.bark();
+    }
+}
+public class Animal
+{
+    public void Eat()
+    {
+        Console.WriteLine("Animal Can Eat");
+    }
+    public void Sleep()
+    {
+        Console.WriteLine("Animals Can Also Sleep");
+    }
+}
+public class Dog:Animal
+{
+    public void bark()
+    {
+        Console.WriteLine("Dog Can Bark");
+    }
+    
+}
+
+------------------------------------------------
+Encapsulation
+
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        BankAccount a = new BankAccount(5000);
+
+        a.Deposit(500000);     
+        a.Withdraw(50000);     
+
+        Console.WriteLine("Final Balance: " + a.GetBalance());
+    }
+}
+
+public class BankAccount
+{
+    private double balance;  
+
+    public BankAccount(double initialBalance)
+    {
+        if (initialBalance > 0)
+        {
+            balance = initialBalance; 
+        }
+        else
+        {
+            balance = 0;
+        }
+    }
+
+    public void Deposit(double amount)
+    {
+        if (amount > 0)
+        {
+            balance = balance + amount;
+            Console.WriteLine("Deposited: " + amount);
+        }
+        else
+        {
+            Console.WriteLine("Invalid Deposit!");
+        }
+    }
+
+    public void Withdraw(double amount)
+    {
+        if (amount > 0 && amount <= balance)   
+        {
+            balance = balance - amount;
+            Console.WriteLine("Withdrawn: " + amount);
+        }
+        else
+        {
+            Console.WriteLine("Invalid Withdraw Amount!");
+        }
+    }
+
+    public double GetBalance()
+    {
+        return balance;
+    }
+}
+------------------------------------------------------
+Polymorphism
+Compile-time Polymorphism (Method Overloading)
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+      Calculator c = new Calculator();
+      Console.WriteLine(c.add(3,4));
+      Console.WriteLine(c.add(3,4,5));
+      
+    }
+}
+
+public class Calculator
+{
+    public int add(int a, int b)
+    {
+        return a+b;
+    }
+    public int add(int a , int b, int c)
+    {
+        return a+b+c;
+    }
+}
+
+Runtime Polymorphism (Method Overriding)
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        Dog d = new Dog();
+        d.Speak();
+        Cat c = new Cat();
+        c.Speak();
+        Animal a = new Animal();
+        a.Speak();
+      
+    }
+}
+public class Animal
+{
+    public virtual void Speak()
+    {
+        Console.WriteLine("Animal can make a sound");
+    }
+}
+
+public class Dog : Animal
+{
+    public override void Speak()
+    {
+        Console.WriteLine("Dog can bark");
+    }
+}
+
+public class Cat : Animal
+{
+    public override void Speak()
+    {
+        Console.WriteLine("Cat can meow");
+    }
+}
+---------------------------------------------------
+Abstraction
+
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        Animal a = new Pig();   
+        a.AnimalSound();        
+        a.Sleep();             
+    }
+}
+
+public abstract class Animal
+{
+    public abstract void AnimalSound();
+
+    public void Sleep()
+    {
+        Console.WriteLine("Animal is sleeping...");
+    }
+}
+
+public class Pig : Animal
+{
+    public override void AnimalSound()
+    {
+        Console.WriteLine("Pig makes sound: wee wee");
+    }
+}
+------------------------------------------------------
+INTERFACE
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        IAnimal a = new Pig();   // Polymorphism via interface
+        a.AnimalSound();
+    }
+}
+
+// Interface
+public interface IAnimal
+{
+    void AnimalSound();  // No body here
+}
+
+// Class implementing interface
+public class Pig : IAnimal
+{
+    public void AnimalSound()
+    {
+        Console.WriteLine("The pig says: wee wee");
+    }
+}
+
