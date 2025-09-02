@@ -104,10 +104,15 @@ print(count)
 
 #Remove Dublicate Character From String
 name  = "Abrar"
-result  = ""
-for char in name:
-  if char not in result:
-    result = result+char
+result = ""
+for i in range(len(name)):
+    dublicate = False
+    for j in range(len(result)):
+        if (name[i] == result[j]):
+            dublicate = True
+            break
+    if not dublicate:
+        result = result + name[i]
 print(result)
 
 
@@ -183,11 +188,14 @@ for val in matrix:
     print()
   
 print("Sum of All Elements")
-sum = 0
-for i in matrix:
-    for val in i:
-        sum = sum+val
-print(sum)
+matrix =  [[1,2,3],
+          [4,5,6]]
+total  = 0
+for i in range(len(matrix)):
+    for j in range(len(matrix[0])):
+        total = total + matrix[i][j]
+print(total)
+
 print("Maximum and Minimum Value find from 2D matrix")
 minimum = matrix[0][0]
 maximum = matrix[0][0]
