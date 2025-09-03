@@ -197,16 +197,18 @@ for i in range(len(matrix)):
 print(total)
 
 print("Maximum and Minimum Value find from 2D matrix")
-minimum = matrix[0][0]
-maximum = matrix[0][0]
-for i in matrix:
-    for val in i:
-        if val > maximum:
-            maximum = val
-        if val < minimum:
-            minimum = val
-print("Maximum Value: ",maximum)
-print("Minimum Value: ",minimum)
+matrix =  [[0,2,3],
+          [4,50,6]]
+max = matrix[0][0]
+min = matrix[0][0]
+for i in range(len(matrix)):
+    for j in range(len(matrix[i])):
+        if max < matrix[i][j]:
+            max = matrix[i][j]
+        if min > matrix[i][j]:
+            min = matrix[i][j]
+print("Minimum: ",min)
+print("Maximum: ",max)
 
 #Search an element in a 2D array
 matrix = [
@@ -249,8 +251,11 @@ matrix  = [
 ]
 rows = len(matrix)
 cols = len(matrix[0])
-transpose = [[0 for _ in range(rows)] for _ in range(cols)]
-print(transpose)
+transpose = [
+  [0,0],
+  [0,0],
+  [0,0]
+]
 for i in range(rows):
     for j in range(cols):
         transpose[j][i] = matrix [i][j]
