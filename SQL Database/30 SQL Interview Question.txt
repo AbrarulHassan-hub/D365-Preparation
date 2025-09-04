@@ -1,0 +1,188 @@
+--Create Table COMPUTER
+CREATE TABLE COMPUTER (
+    COMPID INT PRIMARY KEY,
+    BRAND VARCHAR(50),
+    COMPMODEL VARCHAR(50),
+    MANUFACTUREDATE DATE
+);
+--Create Student Table
+CREATE TABLE STUDENT (
+    STD_ID INT PRIMARY KEY,             
+    FIRSTNAME VARCHAR(50),              
+    MIDDLENAME VARCHAR(50),              
+    LASTNAME VARCHAR(50),           
+    GENDER CHAR(1),                 
+    EMAILID VARCHAR(100),              
+    PHONENUM VARCHAR(15),              
+    DATEOFJOINING DATE,                 
+    AGE INT,                             
+    CREATED_DATE DATE DEFAULT GETDATE() 
+);
+
+--Create Table Employee
+CREATE TABLE EMPLOYEE (
+    EMPID INT PRIMARY KEY,
+    FIRSTNAME VARCHAR(255),
+    LASTNAME VARCHAR(255),
+    SALARY INT,
+    EMAILID VARCHAR(50),
+    MANAGERID INT,
+    DATEOFJOINING DATE,
+    DEPT VARCHAR(255),
+    COMPID INT,
+    CONSTRAINT FK_COMPID FOREIGN KEY (COMPID) REFERENCES COMPUTER(COMPID)
+);
+--INSERT STUDENT 
+-- Insert multiple sample students
+INSERT INTO STUDENT 
+VALUES (3, 'Hassan', 'Ali', 'Shah', 'M', 'hassan.shah@gmail.com', '03014567890', '2021-08-20', 22, GETDATE());
+
+INSERT INTO STUDENT 
+VALUES (4, 'Fatima', 'Zahid', 'Khan', 'F', 'fatima.khan@yahoo.com', '03124567891', '2020-09-15', 21, GETDATE());
+
+INSERT INTO STUDENT 
+VALUES (5, 'Usman', NULL, 'Raza', 'M', 'usman.raza@hotmail.com', '03034567892', '2019-07-10', 23, GETDATE());
+
+INSERT INTO STUDENT 
+VALUES (6, 'Ayesha', 'Bibi', 'Malik', 'F', 'ayesha.malik@gmail.com', '03334567893', '2022-02-12', 20, GETDATE());
+
+INSERT INTO STUDENT 
+VALUES (7, 'Bilal', NULL, 'Akhtar', 'M', 'bilal.akhtar@gmail.com', '03214567894', '2021-05-30', 24, GETDATE());
+
+INSERT INTO STUDENT 
+VALUES (8, 'Sana', 'Tariq', 'Ahmed', 'F', 'sana.ahmed@yahoo.com', '03454567895', '2023-01-25', 19, GETDATE());
+
+INSERT INTO STUDENT 
+VALUES (9, 'Imran', NULL, 'Khalid', 'M', 'imran.khalid@gmail.com', '03564567896', '2018-03-14', 25, GETDATE());
+
+INSERT INTO STUDENT 
+VALUES (10, 'Mariam', 'Saleem', 'Butt', 'F', 'mariam.butt@hotmail.com', '03674567897', '2022-10-05', 22, GETDATE());
+
+
+--INSERT Computer
+INSERT INTO COMPUTER VALUES (1001,'Lenovo','T480','12-JUN-19');
+INSERT INTO COMPUTER VALUES (1002,'Lenovo','T490','24-AUG-20');
+INSERT INTO COMPUTER VALUES (1003,'SONY','SQ112','01-DEC-19');
+INSERT INTO COMPUTER VALUES (1004,'SONY','SX1001','21-DEC-20');
+
+--INSERT Employee
+INSERT INTO EMPLOYEE 
+VALUES (1, 'NANDA', 'KUMAR', 50000, 'NANDA@GMAIL.COM', NULL, '2012-06-15', 'IT', 1001);
+
+INSERT INTO EMPLOYEE 
+VALUES (2, 'BIPLAB', 'PARIDA', 30000, 'BPARIDA@YAHOO.COM', 1, '2015-12-21', 'IT', 1001);
+
+INSERT INTO EMPLOYEE 
+VALUES (3, 'DISHA', 'PATEL', 50000, 'DISHAP@GMAIL.COM', NULL, '2013-08-21', 'HR', NULL);
+
+INSERT INTO EMPLOYEE 
+VALUES (4, 'SIBA', 'PRASAD', 90000, 'SIBA@GMAIL.COM', 3, '2020-06-01', 'HR', 1002);
+
+INSERT INTO EMPLOYEE 
+VALUES (5, 'ANUSHKA', 'SHARMA', 20000, 'SHARMAA@GMAIL.COM', 1, '2021-03-01', 'IT', NULL);
+
+INSERT INTO EMPLOYEE 
+VALUES (6, 'SOMNATH', 'MAHARANA', 65000, 'SMAHA@GMAIL.COM', 3, '2019-05-07', 'IT', 1003);
+
+--For Dublicate Query Table
+CREATE TABLE DUPLICATE (
+    EMPID INT PRIMARY KEY,
+    FIRSTNAME VARCHAR(50),
+    LASTNAME VARCHAR(50),
+    SALARY INT,
+    EMAILID VARCHAR(50),
+    MANAGERID INT,
+    DATEOFJOINING DATE
+);
+--INSERT Dublicate
+INSERT INTO DUPLICATE 
+VALUES (1, 'NANDA', 'KUMAR', 50000, 'NANDA@GMAIL.COM', NULL, '2012-06-15');
+
+INSERT INTO DUPLICATE 
+VALUES (2, 'BIPLAB', 'PARIDA', 30000, 'BPARIDA@YAHOO.COM', 1, '2015-12-21');
+
+INSERT INTO DUPLICATE 
+VALUES (3, 'SIBA', 'PRASAD', 90000, 'SIBA@GMAIL.COM', 3, '2020-06-01');
+
+INSERT INTO DUPLICATE 
+VALUES (4, 'ANUSHKA', 'SHARMA', 20000, 'SHARMAA@GMAIL.COM', 1, '2021-03-01');
+
+INSERT INTO DUPLICATE 
+VALUES (5, 'BIPLAB', 'PARIDA', 30000, 'BPARIDA@YAHOO.COM', 1, '2015-12-21');
+
+--Show All Table Records
+select * from EMPLOYEE
+select * from COMPUTER
+select * from DUPLICATE 
+
+--Top 30 Interview Question SQL Query
+--1) SQL Query to update DateOfJoining to 15-jul-2025 for Empid
+update EMPLOYEE set DATEOFJOINING = '15-jul-2025' where EMPID = 1
+--2) SQL Query to select all student name where age is greater than 22
+select * from STUDENT WHERE AGE > 22
+--3) SQL Query to find all employee with salary between 40000 and 80000
+select * from EMPLOYEE where SALARY between 40000 and 80000
+--4) SQL QUERY to find name of employee beginning with s
+select * FROM EMPLOYEE where FIRSTNAME like 's%'
+--5) SQL Query to display full name
+select FIRSTNAME+' '+LASTNAME as FullName FROM EMPLOYEE
+--6) Write a Query to fetch details of Employee whose Employee Firstname ends with an Alphabet 'A' and Contains 4 Alphabets
+select * from EMPLOYEE where FIRSTNAME like '____A'
+--7) Write a Query to fetch details of all Employee excluding the Employees with first names, 'ANUSHKA' AND 'SOMNATH' FROM THE EMPLOYEE TABLE;
+SELECT * FROM EMPLOYEE WHERE FIRSTNAME != 'ANUSHKA' or FIRSTNAME != 'SOMNATH'
+--8) Write a Query to Display the Current Date
+select CAST(GETDATE() AS DATE) AS CurrentDate
+--9 SQL Query to get day of last day of previous month?
+-----will do after
+--10)Write an SQL query to fetch the employee FirstNames and Replace the A with '@'
+SELECT REPLACE(FIRSTNAME,'A','@') FROM EMPLOYEE
+--11) Write and SQL query to fetch the domain from an email Idress
+select SUBSTRING(EMAILID, CHARINDEX('@',EMAILID)+1,len(EMAILID)) from EMPLOYEE
+--12) Write an SQL Query to update the Employee means by removing leading and trailing spaces
+update EMPLOYEE set FIRSTNAME = RTRIM(LTRIM(FIRSTNAME))
+--13) Write an SQL Query to fetch all the employee details from employee Table who joined in the year 2020
+select * from EMPLOYEE where year(DATEOFJOINING) = '2025'
+--14) Write an SQL QUERY to fetch only odd rows / Even Rows from table 
+Select * from EMPLOYEE where EMPID%2 != 0
+--15) Write an SQL query to create a new table with data and Structure copied from another table
+select * into EmployeCopy from EMPLOYEE
+--If you want structure only (no data)
+select * into EmployeCopys from EMPLOYEE where 1 =0
+--16) Write an SQL query to create an Empty table with the same structure as some other table
+select * into EmployeCopyss from EMPLOYEE where 1 =2
+--17) Write an SQL Query to fetch top 3 highest Salaries
+SELECT DISTINCT TOP 3 SALARY FROM EMPLOYEE ORDER BY SALARY DESC
+--18) Find the First Employee and Last Employee from table
+select * from EMPLOYEE WHERE EMPID = (SELECT MIN(EMPID) FROM EMPLOYEE)
+select * from EMPLOYEE WHERE EMPID = (SELECT MAX(EMPID) FROM EMPLOYEE)
+--19) List the way to get the count of records in a table
+select count(*) from EMPLOYEE
+--20) Write a Query to fetch the department-wise count of Employees Sorted by Departments count in ascending order
+select COUNT(DEPT) from EMPLOYEE GROUP BY DEPT ORDER BY DEPT ASC
+--21) Write a query to retrieve Departments who have less than 4  Employees Working in it.
+select DEPT FROM EMPLOYEE GROUP BY DEPT HAVING COUNT(DEPT) < 4
+--22) Write a Query to retrieve department wise Maximum Salary
+select MAX(SALARY),DEPT FROM EMPLOYEE group BY DEPT 
+--23) Write a query to Employee earning maximum salary in his department
+ SELECT * FROM EMPLOYEE AS E1 JOIN(select max(SALARY) AS SALARY, DEPT
+ FROM EMPLOYEE GROUP BY DEPT) E2 ON E1.DEPT = E2.DEPT AND E1.SALARY = E2.SALARY
+--24) Write an SQL query to fetch the first 50% records from a table
+SELECT * FROM EMPLOYEE WHERE EMPID <= (SELECT COUNT(*) FROM EMPLOYEE)/2
+--25) Query to fetch details of Employee not having computer
+select * from EMPLOYEE WHERE COMPID IS NULL
+--26) Query to fetch employee details along with the computer details who have been assigned with a computer 
+select * from EMPLOYEE AS E1 INNER JOIN COMPUTER AS C ON E1.COMPID = C.COMPID
+--27) Fetch all employee details along with the computer name assigned to them 
+select e.FIRSTNAME, e.LASTNAME, ISNULL(c.BRAND, 'Not Assigned') from EMPLOYEE e left join COMPUTER c ON e.COMPID = c.COMPID
+--28) Fetch all computer details along with employee name using it
+select c.BRAND,e.FIRSTNAME , e.LASTNAME from EMPLOYEE AS e RIGHT JOIN COMPUTER AS c on e.COMPID = c.COMPID 
+--29) Delete Dublicate Records from a table
+DELETE d1 from DUPLICATE D1 JOIN DUPLICATE D2 ON D1.FIRSTNAME = D2.FIRSTNAME AND D1.LASTNAME = D2.LASTNAME AND D1.EMPID > D2.EMPID
+--30) Find Nth Highest Salary
+SELECT MIN(SALARY) AS Nth_Highest_Salary
+FROM EMPLOYEE
+WHERE Salary IN (
+    SELECT DISTINCT TOP 2 SALARY
+    FROM EMPLOYEE
+    ORDER BY SALARY DESC
+);
