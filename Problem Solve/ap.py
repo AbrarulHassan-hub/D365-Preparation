@@ -103,12 +103,12 @@ for char in name:
 print(count)
 
 #Remove Dublicate Character From String
-name  = "Abrar"
+name = "Abrar"
 result = ""
 for i in range(len(name)):
     dublicate = False
     for j in range(len(result)):
-        if (name[i] == result[j]):
+        if name[i].lower() == result[j].lower():  
             dublicate = True
             break
     if not dublicate:
