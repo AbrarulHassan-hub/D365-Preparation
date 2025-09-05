@@ -186,7 +186,7 @@ for val in matrix:
     for j in val:
         print(j,end=" ")
     print()
-  
+#Sum of All Elements
 print("Sum of All Elements")
 matrix =  [[1,2,3],
           [4,5,6]]
@@ -195,7 +195,7 @@ for i in range(len(matrix)):
     for j in range(len(matrix[0])):
         total = total + matrix[i][j]
 print(total)
-
+#Maximum and Minimum value find from 2D 
 print("Maximum and Minimum Value find from 2D matrix")
 matrix =  [[0,2,3],
           [4,50,6]]
