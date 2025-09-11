@@ -85,14 +85,14 @@ print("Bubble Sort:", bubbleSort(a))
 #Find the largest and smallest number in an array.
 arr =  [5, 2, 9, 1, 7]
 smallest = arr[0]
-Largest = arr[0]
-for num in arr:
-  if num < smallest:
-    smallest = num
-  if num > Largest:
-    Largest = num
+largest = arr[0]
+for i in range(len(arr)):
+    if arr[i] > largest:
+        largest = arr[i]
+    if arr[i] < smallest:
+        smallest = arr[i]
 print("Smallest Element ",smallest)
-print("Largest Element", Largest)
+print("Largest Element", largest)
 
 #Write a program to count vowels in a given string.
 name = "Abrar"
